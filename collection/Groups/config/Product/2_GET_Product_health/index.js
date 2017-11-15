@@ -11,6 +11,7 @@ var myItems2 = new Item({
         method: "GET",
     }
 });
+
 myItems2.events.add({
     listen: 'test',
     script: {

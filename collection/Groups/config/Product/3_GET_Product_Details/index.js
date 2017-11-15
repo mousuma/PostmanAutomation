@@ -1,8 +1,7 @@
 var fs = require('fs');
+var Item = require('postman-collection').Item;
 
- var Item = require('postman-collection').Item;
-
- const EXEC = fs.readFileSync(`${__dirname}/test.js`, 'utf8').split("\n");
+const EXEC = fs.readFileSync(`${__dirname}/test.js`, 'utf8').split("\n");
 
 var myItems3 = new Item({
     name: "Health endpoint 3",
@@ -20,8 +19,4 @@ myItems3.events.add({
     }
 });
 
-
 exports.myItems3 = myItems3;
-
-
-

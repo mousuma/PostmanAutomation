@@ -1,7 +1,7 @@
 var fs = require('fs');
- var Item = require('postman-collection').Item;
+var Item = require('postman-collection').Item;
 
- const EXEC = fs.readFileSync(`${__dirname}/test.js`, 'utf8').split("\n");
+const EXEC = fs.readFileSync(`${__dirname}/test.js`, 'utf8').split("\n");
 
 var bdd = new Item({
     name: "Postman BDD",
@@ -20,6 +20,3 @@ bdd.events.add({
  });
 
 exports.bdd = bdd;
-
-
-

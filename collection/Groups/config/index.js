@@ -1,36 +1,34 @@
 
-var itemGroup = require('postman-collection').ItemGroup;
-var checkout = require('./Product');
+var ItemGroup = require('postman-collection').ItemGroup;
+var tests = require('./Product');
 
-
- var ItemFolder = new itemGroup({
+var ItemFolder = new ItemGroup({
     name: "This is API test folder",
     description: "This is my second postman Folder"
 });
 
+var testCollection = [];
 
-var item;
-var obj=[];
-var rst;
+for(var test in tests) {
+    if (tests.hasOwnProperty(test)) {
+        var item = tests[test];
 
-for(var c in checkout)
-{
-    item = checkout[c];
-    for(var key in item)
-    {
-         rst = item[key];
-        for (var k in rst )
-        {
-            obj.push(rst[k]);
+        for(var key in item) {
+            var result = item[key];
+
+            for (var r in result ) {
+                if (result.hasOwnProperty(r)) {
+                    testCollection.push(result[r]);
+                }
+            }
         }
     }
 }
 
-
-for(var o in obj) {
-
-    console.log(JSON.stringify(obj[0]));
-    ItemFolder.items.add(obj[o]);
+for(var o in testCollection) {
+    if (testCollection.hasOwnProperty(o)) {
+        ItemFolder.items.add(testCollection[o]);
+    }
 }
 
 exports.ItemFolder = ItemFolder;
