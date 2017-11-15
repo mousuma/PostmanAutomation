@@ -1,0 +1,112 @@
+{
+ "info": {
+  "id": "4f89c6aa-1fa4-4288-94a5-da7fc144e392",
+  "name": "my Collection",
+  "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+ },
+ "event": [],
+ "variable": [],
+ "item": [
+  {
+   "id": "1ade1133-dfa8-44d8-a248-71b782da03a6",
+   "name": "This is API test folder",
+   "description": {
+    "content": "This is my second postman Folder",
+    "type": "text/plain"
+   },
+   "item": [
+    {
+     "id": "709e1677-388f-45b3-b7f4-b86acf8c1a5a",
+     "name": "Postman BDD",
+     "description": {
+      "content": "Install Postman BDD",
+      "type": "text/plain"
+     },
+     "request": {
+      "url": "http://bigstickcarpet.com/postman-bdd/dist/postman-bdd.min.js",
+      "method": "GET"
+     },
+     "response": [],
+     "event": [
+      {
+       "listen": "test",
+       "script": {
+        "type": "text/javascript",
+        "exec": [
+         "// Load PostmanBDD first",
+         "",
+         "postman.setGlobalVariable('postmanBDD', responseBody);",
+         ""
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "id": "bfa3def0-b95f-42be-889a-5679a7acd127",
+     "name": "Health endpoint 2",
+     "description": {
+      "content": "Product API /health 2 endpoint",
+      "type": "text/plain"
+     },
+     "request": {
+      "url": "{{URL}}/health",
+      "method": "GET"
+     },
+     "response": [],
+     "event": [
+      {
+       "listen": "test",
+       "script": {
+        "type": "text/javascript",
+        "exec": [
+         "eval(globals.postmanBDD);",
+         "",
+         "describe('Get /Health response', function() {",
+         "    it('should return a 200 response', function() {",
+         "        response.should.have.status(200);",
+         "     });",
+         " });",
+         "",
+         ""
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "id": "e70809f0-d3ec-4a0b-987f-00c022149b4d",
+     "name": "Health endpoint 3",
+     "description": {
+      "content": "Product API /health 3 endpoint",
+      "type": "text/plain"
+     },
+     "request": {
+      "url": "{{URL}}/product/:id",
+      "method": "POST"
+     },
+     "response": [],
+     "event": [
+      {
+       "listen": "test",
+       "script": {
+        "type": "text/javascript",
+        "exec": [
+         "eval(globals.postmanBDD);",
+         "",
+         "describe('Product endpoint response', function() {",
+         "    it('should return a 200 response', function() {",
+         "        response.should.have.status(200);",
+         "     });",
+         " });",
+         ""
+        ]
+       }
+      }
+     ]
+    }
+   ],
+   "event": []
+  }
+ ]
+}
